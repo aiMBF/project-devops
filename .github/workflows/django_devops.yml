@@ -40,6 +40,8 @@ jobs:
       run: docker build . --file Dockerfile --tag baldita/devops-django-app:${{ github.sha }}
 
     - name: Run the tests
+      env:
+        DJANGO_SETTINGS_MODULE: devopsProject.settings
       run: python manage.py test
 
     - name: Push Docker image to Docker Hub
