@@ -17,6 +17,9 @@ jobs:
           POSTGRES_DB: postgres
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+          HOST: db
+          PORT: 5432
+          
     
     steps:
     - name: Checkout code
