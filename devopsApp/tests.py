@@ -19,6 +19,18 @@ class PersonModelTestCase(TestCase):
 
 # if there was constraint on the "username" field in order to make it unique
 
+# class PersonModelTestCase(TestCase):
+#    def test_unique_username(self):
+#        Person.objects.create(
+#            firstname='John', lastname='Doe',
+#            email='john@example.com', username='johndoe'
+#        )
+#  #      with self.assertRaises(IntegrityError):
+#            Person.objects.create(
+#                firstname='Another', last_name='Person',
+#                email='another@example.com', username='johndoe'
+#            )
+
 # 2 - Tests for Views
 
 class UserViewTests(TestCase):
