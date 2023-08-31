@@ -36,6 +36,8 @@ jobs:
     - name: Run the tests
       run: python manage.py test
       
+    - name: Tag
+      run: docker tag devops-django-app:latest devops-django-app:latest
 
     - name: Push Docker image to Docker Hub
       run: docker push baldita/devops-django-app:latest
