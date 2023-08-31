@@ -3,11 +3,20 @@ name: Django Devops CI/CD Pipeline
 on:
   push:
     branches: [ "master" ]
+
+
     
 jobs:
 
   build_test_push:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
     
     steps:
     - name: Checkout code
