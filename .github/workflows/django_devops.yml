@@ -26,7 +26,7 @@ jobs:
       run: docker build -t devops-django-app:latest .
 
     - name: Run the tests
-      run: python migrate test
+      run: python manage.py test
 
     - name: Push Docker image to Docker Hub
       run: docker push ${{ secrets.DOCKER_USENAME }}/devops-django-app:latest
