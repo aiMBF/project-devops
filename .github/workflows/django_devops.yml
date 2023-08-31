@@ -42,7 +42,7 @@ jobs:
     - name: Run the tests
       env:
         DJANGO_SETTINGS_MODULE: devopsPproject.settings
-      run: python manage.py test
+      run: python manage.py test --host=postgres
 
     - name: Push Docker image to Docker Hub
       run: docker push baldita/devops-django-app:${{ github.sha }}
