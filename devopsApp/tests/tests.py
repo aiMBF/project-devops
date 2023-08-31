@@ -44,3 +44,9 @@ class UserViewTests(TestCase):
         response = self.client.get(reverse('user_list'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'johndoe')  # Check if 'johndoe' is in the response content
+        
+#Look if the app loads correctly        
+class AppLoadTest(TestCase):
+    def test_app_loads(self):
+        response = self.client.get(reverse('home_view')) 
+        self.assertEqual(response.status_code, 200)
