@@ -35,6 +35,10 @@ jobs:
 
     - name: Run the tests
       run: python manage.py test
+      
+    - name: Tags
+      run: docker tag django-devops:latest baldita/django_postgres:latest
+
 
     - name: Push Docker image to Docker Hub
       run: docker push baldita/django_postgres:latest
