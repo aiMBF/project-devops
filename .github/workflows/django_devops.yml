@@ -41,6 +41,9 @@ jobs:
     - name: Build Docker image
       run: docker build . --file Dockerfile --tag baldita/devops-django-app:${{ github.sha }}
 
+    - name: Build Compose
+      run: docker-compose up -d --build
+
     - name: Run the tests
       env:
         DJANGO_SETTINGS_MODULE: devopsPproject.settings
