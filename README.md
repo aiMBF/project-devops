@@ -68,8 +68,9 @@ minikube service django-service
 
 ##  Contributions
 For further information you can directly contact the developers of the project
-* [Mamoudou Mamadou Sow](<MAILTO:smamadoumamoudou@ept.sn>)
-* [Mouhamed Abdoulaye Sadji](<MAILTO:sadjiabdoulaye@ept.sn>)
 * [Aissatou Baldé](<MAILTO:baldeaissatou@ept.sn>)
 * [Farimata Ngom](<MAILTO:ngfarimata@ept.sn>)
+* [Mouhamed Abdoulaye Sadji](<MAILTO:sadjiabdoulaye@ept.sn>)
+* [Mamoudou Mamadou Sow](<MAILTO:smamadoumamoudou@ept.sn>)
+
 
