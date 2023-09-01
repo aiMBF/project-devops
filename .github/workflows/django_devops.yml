@@ -45,7 +45,7 @@ jobs:
       run: |
           docker-compose up -d --build
           chmod +x wait-for-it.sh
-          ./wait-for-it.sh --host:db --port:5432 -t 60
+          ./wait-for-it.sh --host=db --port=5432 -t 60
           docker-compose ps
 
     - name: Test Docker Django App
