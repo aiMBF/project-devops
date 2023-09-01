@@ -42,7 +42,13 @@ jobs:
       run: docker build . --file Dockerfile --tag baldita/devops-django-app:${{ github.sha }}
 
     - name: Build Compose
-      run: docker-compose up -d --build
+      run: docker-compose up -d 
+
+    - name: Wait for PostgreSQL to be ready
+      run: |
+          until docker-compose -f docker-compose.yml exec -T db pg_isready; do
+            sleep 2
+          done
 
     - name: Run the tests
       env:
