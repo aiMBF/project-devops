@@ -43,9 +43,9 @@ jobs:
 
     - name: Start Docker container for validation
       run: |
-          docker run -d --name django-app-validation -p 8000:8000 baldita/devops-django-app:${{ github.sha }}
+          docker-compose up -d --build
           sleep 20  
-          docker ps
+          docker-compose ps
 
     - name: Validate Docker container
       run: |
