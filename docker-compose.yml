@@ -23,7 +23,8 @@ services:
     volumes:
       - .:/code
     depends_on:
-      - db
+      - db:
+           condition: service_healthy
 
 volumes:
   postgres_data:
