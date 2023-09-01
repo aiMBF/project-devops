@@ -100,7 +100,7 @@ if os.environ.get('GITHUB_WORKFLOW'):
            'NAME': 'postgres',
            'USER': 'postgres',
            'PASSWORD': 'postgres',
-           'HOST': 'db',
+           'HOST': 'postgres',
            'PORT': 5432,
         }
     }
