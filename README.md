@@ -1,64 +1,72 @@
-# DevOps : Pipeline CI-CD
+# DevOps Project with Django, Docker, GitHub Actions, and Kubernetes
 
 ## Table of Contents
-- [sequencing_module](#sequencing_module)
-  - [Table of Contents](#table-of-contents)
-  - [General Info](#general-info)
-    - [1.Contextualization of the project](#1contextualization-of-the-project)
-    - [2.Presentation of the project](#2presentation-of-the-project)
-  - [Technologies](#technologies)
-  - [Installation](#installation)
-  - [FAQs](#faqs)
-    - [2. Contact the developers](#2-contact-the-developers)
+- [Objective](#objective)
+- [Development and Deployment Stack](#development-and-deployment-stack)
+- [Using Locally](#using-locally)
+- [CI/CD with GitHub Actions](#cicd-with-github-actions)
+- [Deployment with Kubernetes](#deployment-with-kubernetes)
+- [Contributions](#contributions)
+
+## Objective
+
+This project aims to develop a simple Django application and deploy it using a Continuous Integration/Continuous Deployment (CI/CD) pipeline implemented with GitHub Actions, Docker, and Kubernetes.
 
 
-## General Info
-***
-### 1.Contextualization of the project
-We always struggle to deploy an app automatically because of the intervention of the human being in the process of automation but 
-we want to diminish the intervention of the human . So our project aims to have a pipeline for delivering the app build with django
+## Development and Deployment Stack
 
-### 2.Presentation of the project
-this project is just having a view rendering users saved on the postgres sql database
+- Web application: Django and Postgres
+- Containerization: Docker and Docker Compose
+- Continuous Integration/Continuous Deployment: GitHub Actions
+- Container Orchestration: Kubernetes
+  
+## Using locally
 
-### 3. Configuration
-
-#### Dockerfile
-we need to create a custom image that contains Python but also installs our code and has additional configuration details. To build our own image we create a special file known as a Dockerfile that defines the steps to create and run the custom image.
-
-#### .dockerignore
-A **.dockerignore** file is a best practice way to specify certain files and directories that should not be included in a Docker image. This can help reduce overall image size and improves security by keeping things that are meant to be secret out of Docker.
-
-#### docker-compose.yml
-Our fully-built custom image is now available to run as a container. In order to run the container we need a list of instructions in a file called **docker-compose.yml**
-
-### Screenshots
-* screenshot 1
+### Preview
+* Here is a preview of the web application.
 ![home page](./devopsApp/static/img/screenshots/home.png)
 
-## Technologies
-***
-A list of technologies used within the project:
-* [Django](https://www.djangoproject.com): Version 12.3
-* [psycopg2-binary](https://pypi.org/project/psycopg2-binary/): Version 2.9.7
 
-
-## Installation
-***
-
-### 1. A little intro about the installation.
+### How to run the project locally
 ```
-$ git clone https://github.com/mamoudousow098/sequencing_module.git
-$ cd ../path/to/the/file
+$ git clone https://github.com/aiMBF/project-devops.git
+$ cd ../path/to/the/project_folder
 $ docker-compose up -d --build
-$ after instatllation you can access the django project [home page](http://127.0.0.1:8000/)
+After installation, you can access the django web app at http://127.0.0.1:8000/
 ```
 
+## CI/CD with GitHub Actions
 
-## FAQs
-***
+This project implements a GitHub Actions workflow. Whenever changes are pushed to the main branch, the workflow should perform the following actions:
+- Build the Docker image for the Django application.
+- Run a simple test to ensure the application loads correctly.
+- Push the Docker image to a container registry (such as Docker Hub or GitHub's Container Registry, etc.).
 
-###  Contact the developers
+![gitub actions](./devopsApp/static/img/screenshots/github_actions.png)
+
+## Deployment with Kubernetes
+
+### Setting Up the Development Environment
+Ensure you have Minikube installed. [Minikube Installation Guide
+](https://minikube.sigs.k8s.io/docs/start/)
+
+Start Minikube:
+```
+minikube start
+
+```
+
+Deploy the application in Minikube:
+```
+kubectl apply -f kubernetes/deployment.yaml
+kubectl apply -f kubernetes/service.yaml
+```
+Access the application in your browser:
+```
+minikube service django-service
+```
+
+##  Contributions
 For further information you can directly contact the developers of the project
 * [Mamoudou Mamadou Sow](<MAILTO:smamadoumamoudou@ept.sn>)
 * [Mouhamed Abdoulaye Sadji](<MAILTO:sadjiabdoulaye@ept.sn>)
