@@ -44,12 +44,13 @@ jobs:
     - name: Start Docker compose for validation
       run: |
           docker-compose up -d --build
-          sleep 20
+          chmod +x wait-for-it.sh
+          ./wait-for-it.sh db:5432 -t 60
           docker-compose ps
 
     - name: Test Docker Django App
       run: |
-          curl -s -o /dev/null -w "%{http_code}" http://localhost:8000  
+          python manage.py test 
 
 
     - name: Push Docker image to Docker Hub
