@@ -25,7 +25,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Default values if not provided
-host=${host:-localhost}
+host=${host:-db}
 port=${port:-5432}
 timeout=${timeout:-60}
 
