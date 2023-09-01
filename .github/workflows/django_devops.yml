@@ -49,7 +49,7 @@ jobs:
          # docker-compose ps
       run: |
        docker-compose up -d --build
-       sleep 20
+       sleep 40
        
 
     - name: Test Docker Django App
