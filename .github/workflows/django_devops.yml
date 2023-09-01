@@ -41,32 +41,15 @@ jobs:
     - name: Build Docker image
       run: docker build . --file Dockerfile --tag baldita/devops-django-app:${{ github.sha }}
 
-    - name: Start Docker container for validation
+    - name: Start Docker compose for validation
       run: |
           docker-compose up -d --build
-          sleep 20  
           docker-compose ps
 
-    - name: Validate Docker container
+    - name: Test Docker Django App
       run: |
           curl -s -o /dev/null -w "%{http_code}" http://localhost:8000  
 
-    - name: Stop and Remove Docker container
-      run: docker stop django-app-validation && docker rm django-app-validation
-
-   # - name: Build Compose
-    #  run: docker-compose up -d 
-
-   # - name: Wait for PostgreSQL to be ready
-    #  run: |
-      #    until docker-compose -f docker-compose.yml exec -T db pg_isready; do
-       #     sleep 2
-       #   done
-
-    #- name: Run the tests
-      #env:
-      #  DJANGO_SETTINGS_MODULE: devopsPproject.settings
-      #run: python manage.py test --keepdb --verbosity 2
 
     - name: Push Docker image to Docker Hub
       run: docker push baldita/devops-django-app:${{ github.sha }}
