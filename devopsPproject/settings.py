@@ -99,7 +99,7 @@ if os.environ.get('GITHUB_WORKFLOW'):
         }
     }
 
-DATABASES = {
+"""DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "postgres",
@@ -111,7 +111,7 @@ DATABASES = {
             'NAME': "postgres", # set in docker-compose.yml
         }
     }
-}
+}"""
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
