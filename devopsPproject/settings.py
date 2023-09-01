@@ -82,16 +82,7 @@ WSGI_APPLICATION = 'devopsPproject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "db",  # set in docker-compose.yml
-        "PORT": 5432,  # default postgres port
-    }
-}
+
 
 if os.environ.get('GITHUB_WORKFLOW'):
     DATABASES = {
@@ -102,9 +93,25 @@ if os.environ.get('GITHUB_WORKFLOW'):
            'PASSWORD': 'postgres',
            'HOST': 'db',
            'PORT': 5432,
+           'TEST':{
+               'NAME':'postgres_test'
+           }
         }
     }
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "postgres",
+        "HOST": "db",  # set in docker-compose.yml
+        "PORT": 5432,  # default postgres port
+        'TEST': {
+            'NAME': "postgres", # set in docker-compose.yml
+        }
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
