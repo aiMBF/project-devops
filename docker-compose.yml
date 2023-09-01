@@ -24,14 +24,14 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     environment:
       - "POSTGRES_HOST_AUTH_METHOD=trust"
-    network:
+    networks:
       - dda-network
   migration:
     image: django
     command: python /code/manage.py migrate --noinput
     volumes:
       - .:/code
-    network:
+    networks:
       - dda-network
     depends_on:
       - db
