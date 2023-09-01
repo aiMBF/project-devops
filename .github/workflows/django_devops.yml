@@ -3,11 +3,22 @@ name: Django Devops CI/CD Pipeline
 on:
   push:
     branches: [ "master" ]
+
+
     
 jobs:
 
   build_test_push:
     runs-on: ubuntu-latest
+    #services:
+      #postgres:
+        #image: postgres:13
+        #env:
+          #POSTGRES_DB: postgres
+          #POSTGRES_USER: postgres
+          #POSTGRES_PASSWORD: postgres
+          
+          
     
     steps:
     - name: Checkout code
@@ -30,8 +41,24 @@ jobs:
     - name: Build Docker image
       run: docker build . --file Dockerfile --tag baldita/devops-django-app:${{ github.sha }}
 
-    - name: Run the tests
-      run: python manage.py test
+    - name: Start Docker compose for test
+      #run: |
+       #   docker-compose up -d --build
+         # chmod +x wait-for-it.sh
+         # ./wait-for-it.sh --host=db --port=5432 --timeout=180
+         # docker-compose ps
+      run: |
+       docker-compose up -d --build
+       sleep 20
+       docker-compose ps
+       
+
+    - name: Test Docker Django App
+      #run: |
+         # python manage.py test 
+      run:
+         curl -s -o /dev/null -w "%{http_code}" -k http://localhost:8000
+
 
     - name: Push Docker image to Docker Hub
       run: docker push baldita/devops-django-app:${{ github.sha }}

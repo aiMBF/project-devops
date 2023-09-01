@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from models import Person
+from devopsApp.models import Person
 from django.db.utils import IntegrityError
 from django.urls import reverse
 # Create your tests here.
